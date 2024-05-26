@@ -116,7 +116,7 @@ export default {
 .main-wrapper {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  gap: 30px;
+  gap: 5vw;
 }
 
 .sanya-loh-wrapper {
@@ -242,7 +242,6 @@ export default {
   }
 
   .sanya-loh__music-wrapper {
-    width: 290px;
     max-height: 250px;
     height: fit-content;
   }

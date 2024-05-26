@@ -94,7 +94,6 @@ export default {
 .sanya-loh__music-wrapper {
   display: grid;
   gap: 10px;
-  width: 290px;
   height: 200px;
   background: linear-gradient(red, orange, yellow, green, blue, purple);
   border-radius: 30px;
