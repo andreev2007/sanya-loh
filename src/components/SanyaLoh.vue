@@ -70,7 +70,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 200px;
+  gap: 5vh;
 
   h5 {
     color: white;
