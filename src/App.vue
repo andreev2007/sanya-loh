@@ -15,10 +15,6 @@ export default {
 
 <style>
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
   background-image: url("https://i.pinimg.com/564x/c7/e0/cd/c7e0cde974b68327792e0037ed39791f.jpg");
   background-position: center;
   background-repeat: no-repeat;
