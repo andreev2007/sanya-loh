@@ -6,6 +6,7 @@
         @music-start="musicStart"
         @music-replace="audioReplace"
         :clicked="clicked"
+        :active-item="activeItem"
     />
     <div class="sanya-loh-wrapper">
       <div class="sanya-loh-wrapper__music-info">

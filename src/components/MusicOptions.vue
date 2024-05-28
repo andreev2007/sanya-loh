@@ -7,7 +7,13 @@
     </button>
     <transition name="bounce">
       <ul class="sanya-loh__music-list" v-if="windowWidth > 1000 || isMenuOpened">
-        <li v-for="item in musicOptions" :key="item.id" class="sanya-loh__music-item" @click="chooseAudio(item)">
+        <li
+            v-for="item in musicOptions"
+            :class="{'active': activeItem.option_name === item.option_name}"
+            :key="item.id"
+            class="sanya-loh__music-item"
+            @click="chooseAudio(item)"
+        >
           <img class="sanya-loh__music-img" :src="item.img_src"
                alt="nigga-music">
           <p class="sanya-loh__item-descr">
@@ -50,6 +56,9 @@ export default {
     clicked: {
       type: Boolean,
       default: false,
+    },
+    activeItem: {
+      type: Object,
     },
   },
   data() {
@@ -155,6 +164,13 @@ export default {
   align-items: center;
   letter-spacing: 2px;
   cursor: pointer;
+  border-radius: 10px;
+  padding: 5px;
+  transition: 2s;
+
+  &.active {
+    background: darkmagenta;
+  }
 }
 
 .sanya-loh__item-descr {
@@ -183,6 +199,9 @@ export default {
 
 
 .sanya-loh__music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin: 0;
   list-style: none;
   transition: .3s;
