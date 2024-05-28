@@ -4,6 +4,9 @@
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
+    "types": [
+      "vue3-toastify/global"
+    ],
     "paths": {
       "@/*": [
         "src/*"

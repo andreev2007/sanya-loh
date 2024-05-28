@@ -23,8 +23,6 @@
         </div>
       </div>
       <div class="info">
-        <a class="download-button" href="../assets/gay_porn.zip" download="gay_porn.zip">СКАЧАТЬ</a>
-        <h5>Все права защищены Даниилом Андреевом©</h5>
         <div class="you-agree-block">
           <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVFMmw2OZx7f8zb5Hd0FAk9T9d3mLRny6CjXi33ONDZw&s"
@@ -173,29 +171,6 @@ export default {
       border-radius: 100%;
       user-select: none;
     }
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .download-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background: #0ec10e;
-    height: 60px;
-    width: 250px;
-    cursor: pointer;
-    font-size: 35px;
-    color: white;
-    border: none;
   }
 
   .you-agree-block {

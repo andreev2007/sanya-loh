@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "moment": "^2.30.1",
+    "vue": "^3.2.13",
+    "vue3-toastify": "^0.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
