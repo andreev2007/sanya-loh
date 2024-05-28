@@ -22,10 +22,31 @@
 import gtaSound from "@/assets/gta san.mp3";
 import blowjoberSound from "@/assets/sanya-loh.mp3";
 import chinaSound from "@/assets/china sound.mp3";
+import chinaLoveSound from "@/assets/loverman.mp3";
 import penisMusic from "@/assets/penis music.mp3";
+import socialCreditPlusMusic from "@/assets/chin chen hong chi.mp3";
+import socialCreditMinusMusic from "@/assets/siren.mp3";
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 export default {
   name: "MusicOptions",
+  setup() {
+    const rndInt = (min, max) => {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    const successNotify = () => {
+      toast.success(`+ ${rndInt(100, 1000)} Social credits`, {
+        autoClose: 2000,
+      });
+    }
+    const dangerNotify = () => {
+      toast.error(`- ${rndInt(100000, 1000000)} Social credits`, {
+        autoClose: 2000,
+      });
+    }
+    return { successNotify, dangerNotify };
+  },
   props: {
     audio: {
       type: Object,
@@ -47,6 +68,7 @@ export default {
           option_label: 'nigga chan',
           img_src: require('../assets/sanya-loh__music-nigga-head-Photoroom.png-Photoroom.png'),
           audio_src: gtaSound,
+          social_credit: -1,
         },
         {
           id: 2,
@@ -54,20 +76,31 @@ export default {
           option_label: 'china credit gimn',
           img_src: require('../assets/sanya-loh__music-nigga-head-second.png'),
           audio_src: chinaSound,
+          social_credit: 1,
         },
         {
           id: 3,
+          option_name: 'china_love',
+          option_label: 'china love',
+          img_src: require('../assets/Love_China_Flag.png'),
+          audio_src: chinaLoveSound,
+          social_credit: 1,
+        },
+        {
+          id: 4,
           option_name: 'penis_music',
           option_label: 'penis music',
           img_src: require('../assets/penis.png'),
           audio_src: penisMusic,
+          social_credit: -1,
         },
         {
-          id: 4,
+          id: 5,
           option_name: 'sanya_sosi',
           option_label: 'sanya blowjober',
           img_src: require('../assets/728757-200.png'),
           audio_src: blowjoberSound,
+          social_credit: -1,
         },
       ]
     }
@@ -80,6 +113,13 @@ export default {
       this.isMenuOpened = !this.isMenuOpened;
     },
     chooseAudio(item) {
+      if (item.social_credit > 0) {
+        this.successNotify();
+        new Audio(socialCreditPlusMusic).play();
+      } else {
+        this.dangerNotify();
+        new Audio(socialCreditMinusMusic).play();
+      }
       this.$emit('music-stop');
       this.$emit('music-replace', new Audio(item.audio_src), item);
       if (this.clicked) {
@@ -90,7 +130,35 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+.Toastify__toast-theme--light {
+  background: #c14a42;
+  color: white;
+
+  &.Toastify__toast--error {
+    .Toastify__toast-icon {
+      background-image: url("../assets/lost social credit a lot.png");
+    }
+  }
+
+  &.Toastify__toast--success {
+    .Toastify__toast-icon {
+      background-image: url("../assets/plus-social-credits.png");
+    }
+  }
+}
+
+.Toastify__toast-icon {
+  width: 100px;
+  height: 100px;
+  background-size: 100px 100px;
+
+  svg {
+    display: none;
+  }
+}
+
 .sanya-loh__music-wrapper {
   display: grid;
   gap: 10px;
