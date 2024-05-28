@@ -19,7 +19,7 @@
             @click="toggleAudio"
             :style="sigmaStyle"
         >
-          <img src="../assets/sanya.png">
+          <img :src="activeSanyaImage">
         </div>
       </div>
       <div class="info">
@@ -36,25 +36,31 @@
 
 <script>
 import MusicOptions from "@/components/MusicOptions.vue";
-
+const defaultSanyaSrc = 'https://firebasestorage.googleapis.com/v0/b/sanya-loh-backend.appspot.com/o/images%2Fsanya.png?alt=media&token=72b9e86d-36b5-4e5a-9aca-69559477e80f';
 export default {
   name: 'SanyaLoh',
   components: {MusicOptions},
   data() {
     return {
       clicked: false,
-      audio: new Audio(require('../assets/sanya-loh.mp3')),
+      audio: new Audio('https://firebasestorage.googleapis.com/v0/b/sanya-loh-backend.appspot.com/o/audios%2Fsanya-loh.mp3?alt=media&token=2ab9aab1-3534-4adf-9fd5-f13f3b68ead6'),
       turn: 0,
+      activeSanyaImage: defaultSanyaSrc,
       activeItem: {
         id: 4,
         option_name: 'sanya_sosi',
         option_label: 'sanya blowjober',
-        img_src: require('../assets/728757-200.png'),
-        audio_src: '../assets/',
       },
     }
   },
   watch: {
+    activeItem(value) {
+      if (value.sanya_img_src) {
+        this.activeSanyaImage = value.sanya_img_src;
+      } else {
+        this.activeSanyaImage = defaultSanyaSrc;
+      }
+    },
     turn() {
       setTimeout(() => {
         if (this.clicked) {
@@ -115,6 +121,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 5vw;
+  justify-content: center;
 }
 
 .sanya-loh-wrapper {
@@ -205,6 +212,10 @@ export default {
     }
   }
 
+  .sanya-loh__music-list {
+    height: 170px;
+  }
+
   .main-wrapper {
     display: grid;
     grid-template-columns: none;
@@ -218,7 +229,11 @@ export default {
 
   .sanya-loh__music-wrapper {
     max-height: 250px;
-    height: fit-content;
+    height: 170px;
+
+    &.closed {
+      height: fit-content;
+    }
   }
 }
 
